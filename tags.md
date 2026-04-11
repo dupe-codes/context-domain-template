@@ -7,7 +7,6 @@ description: Canonical list of approved subject tags for use in the {{DOMAIN_NAM
 
 | Tag | Description |
 | --- | ----------- |
-| | |
 
 <!-- Subject tags are domain-specific. Add tags during onboarding or as the vault grows. -->
 

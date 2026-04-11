@@ -83,13 +83,32 @@ if [ ! -f "$DOMAINS_FILE" ]; then
 fi
 ```
 
-Add an entry mapping the domain slug to its vault path:
+Add an entry using the correct nested format. Each domain has `path`, `orientation_files`, and `skill_prefix`:
 
 ```json
 {
-  "existing_domain": "/path/to/existing",
-  "new_domain_slug": "/path/to/this/vault"
+  "existing_domain": { ... },
+  "<domain_slug>": {
+    "path": "~/vaults/<vault_dir>",
+    "orientation_files": ["README.md", "organization.md"],
+    "skill_prefix": "<skill_prefix>"
+  }
 }
+```
+
+Use `jq` to append the new entry without clobbering existing domains:
+
+```bash
+DOMAINS_FILE="$HOME/.claude/domains.json"
+VAULT_PATH=$(pwd)
+# Use ~ prefix for portability
+VAULT_PATH_SHORT="~/${VAULT_PATH#$HOME/}"
+
+jq --arg slug "<domain_slug>" \
+   --arg path "$VAULT_PATH_SHORT" \
+   --arg prefix "<skill_prefix>" \
+   '.[$slug] = {"path": $path, "orientation_files": ["README.md", "organization.md"], "skill_prefix": $prefix}' \
+   "$DOMAINS_FILE" > "$DOMAINS_FILE.tmp" && mv "$DOMAINS_FILE.tmp" "$DOMAINS_FILE"
 ```
 
 Also update the Justfile: replace `{{DOMAIN_NAME}}` with the display name.

@@ -1,4 +1,6 @@
-# Obsidian
+# Obsidian — workspace state, plugin data, etc. are user-specific.
+# Core config files (app.json, community-plugins.json, templates.json)
+# are force-tracked in this template via `git add -f` so cloners get them.
 .obsidian/
 
 # Claude Code

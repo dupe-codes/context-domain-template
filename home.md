@@ -56,9 +56,7 @@ filters:
   and:
     - tags.contains("project")
     - file.folder != "meta/templates"
-    - or:
-        - status == "active"
-        - status == "in-progress"
+    - status == "in-progress"
 views:
   - type: table
     name: Projects
