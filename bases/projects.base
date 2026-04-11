@@ -1,0 +1,16 @@
+filters:
+  and:
+    - tags.contains("project")
+    - file.folder != "meta/templates"
+views:
+  - type: table
+    name: Projects
+    order:
+      - file.name
+      - status
+      - description
+      - mission
+      - operations
+    sort:
+      - property: status
+        direction: ASC

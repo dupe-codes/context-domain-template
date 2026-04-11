@@ -1,0 +1,15 @@
+filters:
+  and:
+    - tags.contains("operation")
+    - file.folder != "meta/templates"
+views:
+  - type: table
+    name: Operations
+    order:
+      - file.name
+      - status
+      - description
+      - missions
+    sort:
+      - property: status
+        direction: ASC

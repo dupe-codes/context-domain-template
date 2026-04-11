@@ -1,0 +1,18 @@
+filters:
+  and:
+    - tags.contains("quest")
+    - file.folder != "meta/templates"
+views:
+  - type: table
+    name: Quests
+    order:
+      - file.name
+      - status
+      - description
+      - project
+      - operation
+    sort:
+      - property: project
+        direction: ASC
+      - property: status
+        direction: DESC

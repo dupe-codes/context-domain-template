@@ -1,0 +1,14 @@
+filters:
+  and:
+    - tags.contains("mission")
+    - file.folder != "meta/templates"
+views:
+  - type: table
+    name: Missions
+    order:
+      - file.name
+      - status
+      - description
+    sort:
+      - property: status
+        direction: ASC

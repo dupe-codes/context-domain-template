@@ -1,0 +1,12 @@
+# Obsidian
+.obsidian/
+
+# Claude Code
+.claude/worktrees/
+
+# Build artifacts
+**/target/
+
+# System
+.DS_Store
+.trash/
