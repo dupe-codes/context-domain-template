@@ -1,0 +1,16 @@
+filters:
+  and:
+    - tags.contains("inbox")
+    - file.folder != "meta/templates"
+views:
+  - type: table
+    name: full inbox
+    order:
+      - file.name
+      - created_at
+      - description
+      - tags
+      - file.path
+    sort:
+      - property: created_at
+        direction: DESC
